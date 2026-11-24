@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes Prediction System — Lifestyle-Based Risk Assessment</title>
+  <meta
+    name="description"
+    content="Explore how lifestyle habits and health-related information can help assess diabetes risk through our interactive lifestyle-based prediction system."
+  />
+  <meta property="og:title" content="Diabetes Prediction System" />
+  <meta
+    property="og:description"
+    content="Interactive lifestyle-based diabetes risk assessment and academic research demonstration website."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-home">
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html#home" class="brand-link" aria-label="Diabetes Prediction System Home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M2 12h20" opacity="0.24" />
+            <path d="M3 12h4l2.5-6 4 12 2.5-6h5" />
+          </svg>
+        </span>
+        <span class="brand-name">Diabetes Prediction System</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link active" data-nav-link>Home</a>
+        <a href="#about" class="nav-link" data-nav-link>About</a>
+        <a href="#features" class="nav-link" data-nav-link>Features</a>
+        <a href="prediction.html" class="nav-link">Prediction</a>
+        <a href="#disclaimer" class="nav-link" data-nav-link>Contact / Disclaimer</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="prediction.html" class="btn btn-primary btn-sm header-cta">Start Prediction</a>
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="container mobile-nav-inner">
+        <a href="#home" class="mobile-nav-link active" data-mobile-link>Home</a>
+        <a href="#about" class="mobile-nav-link" data-mobile-link>About</a>
+        <a href="#features" class="mobile-nav-link" data-mobile-link>Features</a>
+        <a href="prediction.html" class="mobile-nav-link" data-mobile-link>Prediction</a>
+        <a href="#disclaimer" class="mobile-nav-link" data-mobile-link>Contact / Disclaimer</a>
+        <a href="prediction.html" class="btn btn-primary mobile-nav-cta" data-mobile-link>Start Prediction</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-ambient" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="section-kicker hero-stagger" style="--stagger: 0;">Lifestyle-Based Research Project</p>
+          <h1 class="hero-title hero-stagger" style="--stagger: 1;">Understand Your Diabetes Risk Through Your Lifestyle</h1>
+          <p class="hero-description hero-stagger" style="--stagger: 2;">
+            Explore how lifestyle habits and health-related information can help assess diabetes risk through our lifestyle-based prediction system.
+          </p>
+          <div class="hero-actions hero-stagger" style="--stagger: 3;">
+            <a href="prediction.html" class="btn btn-primary btn-lg">
+              <span>Start Prediction</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#features" class="btn btn-secondary btn-lg">Explore Features</a>
+          </div>
+          <div class="hero-meta hero-stagger" style="--stagger: 4;" aria-label="Study Highlights">
+            <span>9 Guided Questions</span>
+            <span aria-hidden="true">·</span>
+            <span>3 Focused Steps</span>
+            <span aria-hidden="true">·</span>
+            <span>Calibrated Confidence</span>
+            <span aria-hidden="true">·</span>
+            <span>English &amp; Bangla</span>
+          </div>
+        </div>
+
+        <!-- Crafted Clinical Overview Visual -->
+        <div class="hero-visual hero-stagger" style="--stagger: 2;" aria-label="Healthcare assessment preview">
+          <div class="dashboard-canvas">
+            <div class="dash-topbar">
+              <div class="dash-title-group">
+                <span class="dash-emblem" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                  </svg>
+                </span>
+                <div>
+                  <span class="dash-label">Random Forest Screening Model</span>
+                  <span class="dash-sublabel">100 Trees · Platt-Calibrated · Non-Diagnostic</span>
+                </div>
+              </div>
+              <span class="dash-mode-tag">9 Features</span>
+            </div>
+
+            <!-- Subtle Pulse Rhythm Graphic -->
+            <div class="dash-waveform-strip" aria-hidden="true">
+              <div class="waveform-caption">
+                <span>Behavioral, History &amp; Symptom Signals</span>
+                <span class="mono-val">9 Inputs</span>
+              </div>
+              <svg class="pulse-svg" viewBox="0 0 420 46" fill="none" preserveAspectRatio="none">
+                <path
+                  class="pulse-line-bg"
+                  d="M0 24 H84 L102 10 L118 38 L136 16 L150 24 H238 L254 8 L272 39 L290 14 L306 24 H420"
+                  stroke="#D3EAE2"
+                  stroke-width="2"
+                />
+                <path
+                  class="pulse-line-active"
+                  d="M0 24 H84 L102 10 L118 38 L136 16 L150 24 H238 L254 8 L272 39 L290 14 L306 24 H420"
+                  stroke="#0B5345"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+
+            <div class="dash-cards-grid">
+              <!-- Card 1: Health Assessment -->
+              <div class="dash-card float-card-a">
+                <div class="dash-card-head">
+                  <span class="dash-card-icon icon-forest" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 11l3 3L22 4" />
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                  </span>
+                  <h3>Health Assessment</h3>
+                </div>
+                <div class="assessment-ring-row">
+                  <div class="ring-graphic" aria-hidden="true">
+                    <svg viewBox="0 0 80 80" width="72" height="72">
+                      <circle cx="40" cy="40" r="31" fill="none" stroke="#DCE5E1" stroke-width="6.5" />
+                      <circle class="ring-progress" cx="40" cy="40" r="31" fill="none" stroke="#0B5345" stroke-width="6.5" stroke-dasharray="195" stroke-dashoffset="48" stroke-linecap="round" transform="rotate(-90 40 40)" />
+                    </svg>
+                    <span class="ring-text">3 Steps</span>
+                  </div>
+                  <div class="assessment-steps-mini">
+                    <div class="mini-step"><span>01</span> Profile &amp; Exercise</div>
+                    <div class="mini-step"><span>02</span> History &amp; Cravings</div>
+                    <div class="mini-step"><span>03</span> Symptoms</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Lifestyle Analysis -->
+              <div class="dash-card float-card-b">
+                <div class="dash-card-head">
+                  <span class="dash-card-icon icon-sage" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </span>
+                  <h3>Lifestyle &amp; History</h3>
+                </div>
+                <div class="bar-metrics">
+                  <div class="bar-row">
+                    <div class="bar-labels">
+                      <span>Weekly Exercise</span>
+                      <span class="mono-val">Days/wk</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill fill-forest" style="--target-width: 74%;"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-labels">
+                      <span>Sweet Cravings</span>
+                      <span class="mono-val">6 Levels</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill fill-jade" style="--target-width: 56%;"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-labels">
+                      <span>Age &amp; BP History</span>
+                      <span class="mono-val">Encoded</span>
+                    </div>
+                    <div class="bar-track"><div class="bar-fill fill-emerald" style="--target-width: 82%;"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Risk Factors -->
+              <div class="dash-card float-card-b">
+                <div class="dash-card-head">
+                  <span class="dash-card-icon icon-ochre" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </span>
+                  <h3>Risk Factors</h3>
+                </div>
+                <ul class="factor-list">
+                  <li>
+                    <span>Family History</span>
+                    <span class="factor-tag">Included</span>
+                  </li>
+                  <li>
+                    <span>High Blood Pressure</span>
+                    <span class="factor-tag">Included</span>
+                  </li>
+                  <li>
+                    <span>Symptom Signals</span>
+                    <span class="factor-tag">4 Checks</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Card 4: Health Overview -->
+              <div class="dash-card float-card-a">
+                <div class="dash-card-head">
+                  <span class="dash-card-icon icon-ink" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <path d="M7 14l3-3 3 2 4-5" />
+                    </svg>
+                  </span>
+                  <h3>Confidence Output</h3>
+                </div>
+                <p class="overview-caption">Calibrated Confidence Tiers</p>
+                <div class="scale-segments" aria-hidden="true">
+                  <span class="seg seg-low">High</span>
+                  <span class="seg seg-mod">Moderate</span>
+                  <span class="seg seg-elev">Low</span>
+                </div>
+                <p class="overview-note">Prediction class paired with calibrated probability %.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content reveal-on-scroll">
+            <p class="section-kicker">Research Context</p>
+            <h2 class="section-title">About Diabetes Prediction System</h2>
+            <p class="about-lead">
+              Diabetes Prediction System is a research-based project that explores how lifestyle habits and selected health-related information can be used to assess potential diabetes risk through a machine learning approach.
+            </p>
+            <p class="about-body">
+              The website provides an interactive questionnaire and visual assessment experience designed to demonstrate the concept of lifestyle-based diabetes prediction.
+            </p>
+
+            <!-- Editorial Pillars (Hairline separated instead of boxed clones) -->
+            <div class="editorial-pillars">
+              <div class="pillar-row reveal-on-scroll" style="--stagger: 1;">
+                <span class="pillar-index">01</span>
+                <div>
+                  <h3>Everyday Lifestyle Signals</h3>
+                  <p>Examines age group, weekly exercise consistency, and sweet craving habits using exact survey categories.</p>
+                </div>
+              </div>
+              <div class="pillar-row reveal-on-scroll" style="--stagger: 2;">
+                <span class="pillar-index">02</span>
+                <div>
+                  <h3>Non-Invasive Questionnaire</h3>
+                  <p>Evaluates family history, high blood pressure background, and 4 observable symptoms without lab tests.</p>
+                </div>
+              </div>
+              <div class="pillar-row reveal-on-scroll" style="--stagger: 3;">
+                <span class="pillar-index">03</span>
+                <div>
+                  <h3>Calibrated Random Forest Inference</h3>
+                  <p>Runs a 100-tree Random Forest trained on the 994-row study dataset with 5-fold Platt probability calibration directly in the browser.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual reveal-on-scroll" style="--stagger: 1;" aria-label="Research workflow diagram">
+            <div class="workflow-panel">
+              <div class="workflow-panel-header">
+                <span class="workflow-title">How the Assessment Flows</span>
+                <span class="workflow-subtitle">Dedicated Prediction Workspace</span>
+              </div>
+
+              <div class="workflow-steps">
+                <div class="workflow-node reveal-on-scroll" style="--stagger: 1;">
+                  <div class="node-index">01</div>
+                  <div class="node-body">
+                    <h4>Guided Bilingual Questions</h4>
+                    <p>9 required questions across 3 steps presented in clear English and Bangla matching the training dataset.</p>
+                  </div>
+                </div>
+
+                <div class="workflow-connector" aria-hidden="true"></div>
+
+                <div class="workflow-node reveal-on-scroll" style="--stagger: 2;">
+                  <div class="node-index">02</div>
+                  <div class="node-body">
+                    <h4>Exact One-Hot Encoding &amp; Tree Ensemble</h4>
+                    <p>User selections are one-hot encoded into 28 binary indicators and evaluated across all 100 trained Random Forest trees.</p>
+                  </div>
+                </div>
+
+                <div class="workflow-connector" aria-hidden="true"></div>
+
+                <div class="workflow-node reveal-on-scroll" style="--stagger: 3;">
+                  <div class="node-index">03</div>
+                  <div class="node-body">
+                    <h4>Prediction &amp; Calibrated Confidence</h4>
+                    <p>Displays Low or Higher Predicted Risk alongside a Platt-calibrated confidence percentage, tier, and neutral observations.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="workflow-footnote">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                <span>Educational research model trained on the project survey dataset (994 deduplicated rows) — not a clinical diagnostic tool.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section (Asymmetric Human-Crafted Grid) -->
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-header-split reveal-on-scroll">
+          <div>
+            <p class="section-kicker">Core Capabilities</p>
+            <h2 class="section-title">System Features</h2>
+          </div>
+          <p class="section-subtitle">
+            Designed with clarity, bilingual accessibility, and an intuitive step-by-step assessment experience.
+          </p>
+        </div>
+
+        <div class="features-asymmetric-grid">
+          <!-- Feature 1 (Wide Editorial Feature) -->
+          <article class="feature-card feature-wide reveal-on-scroll" style="--stagger: 0;">
+            <div class="feature-card-top">
+              <span class="feature-num">01</span>
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                  <line x1="6" y1="1" x2="6" y2="4" />
+                  <line x1="10" y1="1" x2="10" y2="4" />
+                  <line x1="14" y1="1" x2="14" y2="4" />
+                </svg>
+              </div>
+            </div>
+            <h3>Lifestyle Assessment</h3>
+            <p>Collect selected lifestyle-related information to support the assessment process.</p>
+          </article>
+
+          <!-- Feature 2 -->
+          <article class="feature-card reveal-on-scroll" style="--stagger: 1;">
+            <div class="feature-card-top">
+              <span class="feature-num">02</span>
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+              </div>
+            </div>
+            <h3>Health Information Analysis</h3>
+            <p>Analyze selected health-related answers in a demonstration interface.</p>
+          </article>
+
+          <!-- Feature 3 -->
+          <article class="feature-card reveal-on-scroll" style="--stagger: 2;">
+            <div class="feature-card-top">
+              <span class="feature-num">03</span>
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+            </div>
+            <h3>Family History</h3>
+            <p>Include family history information as an important health-related factor.</p>
+          </article>
+
+          <!-- Feature 4 -->
+          <article class="feature-card reveal-on-scroll" style="--stagger: 3;">
+            <div class="feature-card-top">
+              <span class="feature-num">04</span>
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                </svg>
+              </div>
+            </div>
+            <h3>Interactive Questionnaire</h3>
+            <p>Provide a simple, guided, multi-step questionnaire.</p>
+          </article>
+
+          <!-- Feature 5 (Wide Editorial Feature) -->
+          <article class="feature-card feature-wide reveal-on-scroll" style="--stagger: 4;">
+            <div class="feature-card-top">
+              <span class="feature-num">05</span>
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+              </div>
+            </div>
+            <h3>Visual Results</h3>
+            <p>Present the assessment result using a clear visual dashboard.</p>
+          </article>
+
+          <!-- Feature 6 -->
+          <article class="feature-card reveal-on-scroll" style="--stagger: 5;">
+            <div class="feature-card-top">
+              <span class="feature-num">06</span>
+              <div class="feature-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              </div>
+            </div>
+            <h3>User-Friendly Interface</h3>
+            <p>Provide a modern, responsive, and easy-to-use interface.</p>
+          </article>
+        </div>
+
+        <!-- Clean Callout to Dedicated Prediction Page -->
+        <div class="prediction-cta-band reveal-on-scroll">
+          <div class="cta-band-copy">
+            <h3>Ready to try the interactive questionnaire?</h3>
+            <p>Open the dedicated prediction workspace to complete the 9-question assessment and view the Random Forest prediction and calibrated confidence dashboard.</p>
+          </div>
+          <a href="prediction.html" class="btn btn-primary btn-lg">
+            <span>Go to Prediction Page</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Medical Disclaimer Section -->
+    <section class="section disclaimer-section" id="disclaimer">
+      <div class="container">
+        <div class="disclaimer-layout reveal-on-scroll">
+          <div class="disclaimer-main">
+            <p class="section-kicker">Notice &amp; Research Scope</p>
+            <h2 class="section-title">Medical Disclaimer &amp; Model Limitations</h2>
+            <p class="disclaimer-statement">
+              This website is an educational screening and academic research tool only. Predictions and confidence scores are generated by a Random Forest Classifier trained on a 994-row survey dataset (~51% positive class balance, predominantly respondents aged 18–25) and are not a substitute for professional medical evaluation or laboratory testing (such as fasting glucose or HbA1c). If you have concerns about diabetes or experience symptoms, consult a qualified healthcare professional.
+            </p>
+          </div>
+
+          <div class="research-specs-card">
+            <h3>Model Specification</h3>
+            <dl class="spec-list">
+              <div class="spec-row">
+                <dt>Active Classifier</dt>
+                <dd>Random Forest (100 Trees, Max Depth 6, Min Leaf 5)</dd>
+              </div>
+              <div class="spec-row">
+                <dt>Probability Calibration</dt>
+                <dd>5-Fold OOF Platt Sigmoid Scaling (ECE: 2.71%, Brier: 0.0367)</dd>
+              </div>
+              <div class="spec-row">
+                <dt>Held-Out Test Evaluation (n = 199)</dt>
+                <dd>95.98% Accuracy · 96.04% F1 · 0.9704 ROC-AUC</dd>
+              </div>
+              <div class="spec-row">
+                <dt>Dataset Target &amp; Scope</dt>
+                <dd>Diagnosed with Diabetes (Binary) · 9 Survey Features</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="index.html#home" class="footer-brand">
+            <span class="brand-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h4l2.5-6 4 12 2.5-6h5" />
+              </svg>
+            </span>
+            <span>Diabetes Prediction System</span>
+          </a>
+          <p class="footer-desc">
+            An academic research web application exploring how lifestyle habits, family history, and health symptoms relate to diabetes risk prediction with calibrated confidence levels.
+          </p>
+          <p class="footer-label">Academic Research Project</p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="prediction.html">Prediction</a></li>
+            <li><a href="index.html#disclaimer">Medical Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-disclaimer-col">
+          <h4>Medical Disclaimer</h4>
+          <p>
+            This website is designed for educational and academic research demonstration purposes only. The model output and confidence level reflect patterns in the study survey dataset and do not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional and laboratory testing for clinical evaluation.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Diabetes Prediction System</span>
+        <span aria-hidden="true">·</span>
+        <span>Academic Research Project</span>
+        <span aria-hidden="true">·</span>
+        <span>9-Feature Calibrated Random Forest</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

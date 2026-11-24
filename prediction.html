@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Risk Assessment — Diabetes Prediction System</title>
+  <meta
+    name="description"
+    content="Complete the 9-question bilingual lifestyle, family history, and symptom questionnaire to generate a Random Forest diabetes risk prediction with a calibrated confidence level."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-prediction">
+  <a class="skip-link" href="#predictionMain">Skip to Assessment</a>
+
+  <!-- Shared Sticky Navigation Bar -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html#home" class="brand-link" aria-label="Diabetes Prediction System Home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M2 12h20" opacity="0.24" />
+            <path d="M3 12h4l2.5-6 4 12 2.5-6h5" />
+          </svg>
+        </span>
+        <span class="brand-name">Diabetes Prediction System</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="prediction.html" class="nav-link active" aria-current="page">Prediction</a>
+        <a href="index.html#disclaimer" class="nav-link">Contact / Disclaimer</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html#home" class="btn btn-secondary btn-sm header-cta">Back to Home</a>
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="container mobile-nav-inner">
+        <a href="index.html#home" class="mobile-nav-link" data-mobile-link>Home</a>
+        <a href="index.html#about" class="mobile-nav-link" data-mobile-link>About</a>
+        <a href="index.html#features" class="mobile-nav-link" data-mobile-link>Features</a>
+        <a href="prediction.html" class="mobile-nav-link active" data-mobile-link>Prediction</a>
+        <a href="index.html#disclaimer" class="mobile-nav-link" data-mobile-link>Contact / Disclaimer</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="predictionMain">
+    <!-- Dedicated Prediction Page Intro -->
+    <section class="prediction-page-banner">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Prediction Assessment</span>
+        </nav>
+        <div class="prediction-banner-grid hero-stagger" style="--stagger: 0;">
+          <div>
+            <h1 class="prediction-page-title">Diabetes Risk Assessment</h1>
+            <p class="prediction-page-subtitle">
+              Answer all 9 questions across 3 guided steps to run the trained Random Forest model and view your risk prediction with a Platt-calibrated confidence level. Both English and Bangla prompts are provided.
+            </p>
+          </div>
+          <div class="prediction-banner-note">
+            <span>Calibrated Random Forest</span>
+            <span aria-hidden="true">·</span>
+            <span>All 9 Questions Required</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Questionnaire & Results Workspace -->
+    <section class="section prediction-workspace" id="prediction">
+      <div class="container">
+        <div class="assessment-shell hero-stagger" style="--stagger: 1;" id="assessmentShell">
+          <!-- Stepper & Progress Header -->
+          <div class="assessment-progress-header">
+            <div class="step-meta-row">
+              <div>
+                <span class="step-counter" id="stepCounter">Step 1 of 3</span>
+                <h2 class="step-heading" id="stepHeading">Step 1 — Profile &amp; Weekly Exercise</h2>
+              </div>
+              <div class="progress-stats">
+                <span class="answered-count" id="answeredCount">0 of 9 answered</span>
+                <span class="progress-percent" id="progressPercent">33%</span>
+              </div>
+            </div>
+
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" id="progressBarTrack">
+              <div class="progress-fill" id="progressBarFill" style="width: 33%"></div>
+            </div>
+
+            <div class="step-indicators" aria-label="Questionnaire Steps">
+              <div class="step-indicator active" data-step-indicator="1">
+                <span class="step-dot">1</span>
+                <span class="step-indicator-label">Profile &amp; Exercise</span>
+              </div>
+              <div class="step-indicator" data-step-indicator="2">
+                <span class="step-dot">2</span>
+                <span class="step-indicator-label">History, BP &amp; Cravings</span>
+              </div>
+              <div class="step-indicator" data-step-indicator="3">
+                <span class="step-dot">3</span>
+                <span class="step-indicator-label">Symptoms &amp; Weight Change</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Validation Alert -->
+          <div class="validation-banner" id="validationBanner" role="alert" aria-live="polite" hidden>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            <span id="validationMessage">Please answer all questions in this step before continuing.</span>
+          </div>
+
+          <!-- Multi-step Form (9 Questions Aligned with Training Dataset) -->
+          <form id="assessmentForm" novalidate>
+            <!-- STEP 1: Profile & Weekly Exercise (Questions 1–2) -->
+            <div class="form-step active" data-step="1">
+              <!-- Question 1 -->
+              <fieldset class="question-card" data-question="ageGroup">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 1 of 9</span>
+                    <span class="question-en">What is your age group?</span>
+                    <span class="question-bn" lang="bn">আপনার বয়স কত?</span>
+                    <span class="question-helper">Age brackets match the exact categories recorded in the study dataset.</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="ageGroup" value="Under 18" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Under 18</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="ageGroup" value="18-25" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">18-25</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="ageGroup" value="26-35" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">26-35</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="ageGroup" value="35-40" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">35-40</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Question 2 -->
+              <fieldset class="question-card" data-question="exerciseDays">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 2 of 9</span>
+                    <span class="question-en">How many days per week do you exercise?</span>
+                    <span class="question-bn" lang="bn">সপ্তাহে কত দিন আপনি ব্যায়াম করেন?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="exerciseDays" value="Never" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Never</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="exerciseDays" value="1-2 Days" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">1-2 Days</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="exerciseDays" value="3-4 Days" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">3-4 Days</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="exerciseDays" value="Daily" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Daily</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- STEP 2: Family History, Blood Pressure & Sweet Cravings (Questions 3–5) -->
+            <div class="form-step" data-step="2" hidden>
+              <!-- Question 3 -->
+              <fieldset class="question-card" data-question="familyHistory">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 3 of 9</span>
+                    <span class="question-en">Does anyone in your family have diabetes?</span>
+                    <span class="question-bn" lang="bn">আপনার পরিবারের কারো কি ডায়াবেটিস আছে?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="familyHistory" value="No" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">No</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="familyHistory" value="Not Sure" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Not Sure</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="familyHistory" value="Yes (Parents)" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes (Parents)</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="familyHistory" value="Yes (Grandparents)" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes (Grandparents)</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Question 4 -->
+              <fieldset class="question-card" data-question="highBloodPressure">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 4 of 9</span>
+                    <span class="question-en">Have you ever been diagnosed with high blood pressure?</span>
+                    <span class="question-bn" lang="bn">আপনার কি কখনো উচ্চ রক্তচাপ ধরা পড়েছে?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="highBloodPressure" value="Yes" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="highBloodPressure" value="No" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">No</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Question 5 -->
+              <fieldset class="question-card" data-question="craveSweets">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 5 of 9</span>
+                    <span class="question-en">Do you often crave sweets?</span>
+                    <span class="question-bn" lang="bn">আপনার কি প্রায়ই মিষ্টি খেতে ইচ্ছা করে?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-3">
+                  <label class="option-card">
+                    <input type="radio" name="craveSweets" value="Never" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Never</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="craveSweets" value="Rarely" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Rarely</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="craveSweets" value="Sometimes" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Sometimes</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="craveSweets" value="Often" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Often</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="craveSweets" value="Very often" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Very often</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="craveSweets" value="Always" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Always</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- STEP 3: Health Symptoms & Changes (Questions 6–9) -->
+            <div class="form-step" data-step="3" hidden>
+              <!-- Question 6 -->
+              <fieldset class="question-card" data-question="frequentUrination">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 6 of 9</span>
+                    <span class="question-en">Do you urinate frequently?</span>
+                    <span class="question-bn" lang="bn">আপনার কি ঘন ঘন প্রস্রাব হয়?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="frequentUrination" value="Yes" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="frequentUrination" value="No" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">No</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Question 7 -->
+              <fieldset class="question-card" data-question="excessiveThirst">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M8 2h8l-1.5 18a2 2 0 0 1-2 1.8h-1a2 2 0 0 1-2-1.8L8 2z" />
+                      <path d="M6 6h12" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 7 of 9</span>
+                    <span class="question-en">Do you feel very thirsty?</span>
+                    <span class="question-bn" lang="bn">আপনার কি অতিরিক্ত পিপাসা লাগে?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="excessiveThirst" value="Yes" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="excessiveThirst" value="No" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">No</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Question 8 -->
+              <fieldset class="question-card" data-question="frequentHunger">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 7v5l3 3" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 8 of 9</span>
+                    <span class="question-en">Do you feel hungry frequently?</span>
+                    <span class="question-bn" lang="bn">আপনার কি ঘন ঘন ক্ষুধা লাগে?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="frequentHunger" value="Yes" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="frequentHunger" value="No" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">No</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Question 9 -->
+              <fieldset class="question-card" data-question="weightChange">
+                <legend class="question-header">
+                  <span class="question-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 3v18h18" />
+                      <path d="M7 15l4-4 4 4 5-6" />
+                    </svg>
+                  </span>
+                  <span class="question-text-group">
+                    <span class="question-number">Question 9 of 9</span>
+                    <span class="question-en">Have you lost or gained weight in the last 3 months?</span>
+                    <span class="question-bn" lang="bn">গত ৩ মাসে আপনার কি ওজন কমেছে বা বেড়েছে?</span>
+                  </span>
+                </legend>
+                <div class="options-grid options-grid-2">
+                  <label class="option-card">
+                    <input type="radio" name="weightChange" value="Yes" required />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">Yes</span>
+                    </span>
+                  </label>
+                  <label class="option-card">
+                    <input type="radio" name="weightChange" value="No" />
+                    <span class="option-box">
+                      <span class="option-radio" aria-hidden="true"></span>
+                      <span class="option-label">No</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Form Footer Navigation -->
+            <div class="form-nav-footer">
+              <button type="button" class="btn btn-secondary" id="prevBtn" hidden>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 12H5" />
+                  <path d="m12 19-7-7 7-7" />
+                </svg>
+                <span>Previous</span>
+              </button>
+
+              <div class="form-nav-right">
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                  <span>Next</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+                <button type="submit" class="btn btn-primary" id="submitBtn" hidden>
+                  <span>Predict Diabetes Risk</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 11l3 3L22 4" />
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Prediction Result Dashboard (Revealed on Submission) -->
+        <div class="result-dashboard" id="resultSection" hidden aria-live="polite">
+          <div class="result-top-bar">
+            <div class="result-title-block">
+              <p class="result-meta-line" id="modelMetaLine">
+                <span>Random Forest Classifier</span>
+                <span aria-hidden="true">·</span>
+                <span>100 Trees</span>
+                <span aria-hidden="true">·</span>
+                <span>Platt-Calibrated Probabilities</span>
+              </p>
+              <h2 class="result-heading">Prediction Result Dashboard</h2>
+              <p class="result-subnote">
+                Computed directly from the trained 9-feature Random Forest model using one-hot encoded survey responses.
+              </p>
+            </div>
+          </div>
+
+          <!-- Primary Prediction & Confidence Hero Card -->
+          <div class="result-hero-card" id="resultHeroCard">
+            <div class="result-hero-main">
+              <div class="result-status-icon" id="resultStatusIcon" aria-hidden="true"></div>
+              <div class="result-status-copy">
+                <span class="result-eyebrow">Prediction Result</span>
+                <h3 class="result-category-title" id="resultCategoryTitle">Low Predicted Risk</h3>
+                <p class="result-category-desc" id="resultCategoryDesc"></p>
+              </div>
+            </div>
+
+            <!-- Confidence Level Panel -->
+            <div class="confidence-panel" id="confidencePanel">
+              <div class="confidence-panel-header">
+                <div>
+                  <span class="confidence-kicker">Confidence Level</span>
+                  <div class="confidence-value-row">
+                    <span class="confidence-percentage" id="confidencePercentage">0.0%</span>
+                    <span class="confidence-category-label" id="confidenceCategoryLabel">Moderate</span>
+                  </div>
+                </div>
+                <span class="confidence-trees-meta" id="confidenceTreesMeta">0 / 100 trees</span>
+              </div>
+
+              <div
+                class="confidence-bar-track"
+                role="progressbar"
+                aria-label="Model confidence level"
+                aria-valuemin="50"
+                aria-valuemax="100"
+                aria-valuenow="50"
+                id="confidenceBarTrack"
+              >
+                <div class="confidence-bar-fill" id="confidenceBarFill" style="width: 50%"></div>
+              </div>
+
+              <div class="confidence-bar-scale" aria-hidden="true">
+                <span>50% (Uncertain)</span>
+                <span>65% (Moderate)</span>
+                <span>85%+ (High)</span>
+              </div>
+
+              <div class="confidence-prob-breakdown" id="confidenceProbBreakdown">
+                <span>Modeled P(Higher Risk): <strong id="probYesVal">0.0%</strong></span>
+                <span aria-hidden="true">·</span>
+                <span>Raw RF Vote: <strong id="rawProbYesVal">0.0%</strong></span>
+              </div>
+
+              <p class="confidence-note" id="confidenceNote">
+                Note: The confidence score represents the calibrated model's estimated certainty for this prediction on the study dataset. It is not a medical diagnosis or a guarantee of accuracy.
+              </p>
+            </div>
+          </div>
+
+          <!-- Modeled Risk Probability Spectrum -->
+          <div class="probability-spectrum-card">
+            <div class="spectrum-header">
+              <span class="spectrum-title">Calibrated Positive-Class Score Spectrum</span>
+              <span class="spectrum-readout" id="spectrumReadout">P(Higher Risk) = 0.0% · Decision Threshold = 50.0%</span>
+            </div>
+            <div class="result-scale-labels">
+              <span>0% (Low Risk)</span>
+              <span>50% (Boundary)</span>
+              <span>100% (Higher Risk)</span>
+            </div>
+            <div class="result-scale-track spectrum-track">
+              <div class="result-scale-zone zone-low"></div>
+              <div class="result-scale-zone zone-moderate"></div>
+              <div class="result-scale-zone zone-elevated"></div>
+              <div class="result-scale-marker" id="resultScaleMarker" style="left: 50%"></div>
+            </div>
+          </div>
+
+          <!-- Summary Metric Cards -->
+          <div class="result-cards-grid" id="resultCardsGrid">
+            <!-- Populated dynamically by script.js -->
+          </div>
+
+          <!-- Personalized Informational Observations -->
+          <div class="insights-panel">
+            <div class="insights-header">
+              <h4>Key Input Summary &amp; Model Factors</h4>
+              <p>Neutral educational observations based on your 9 answers and how the trained dataset weights these factors.</p>
+            </div>
+            <ul class="insights-list" id="insightsList">
+              <!-- Populated dynamically by script.js -->
+            </ul>
+          </div>
+
+          <!-- Transparent Evaluation & Dataset Scope Panel -->
+          <div class="model-transparency-box" aria-label="Model Evaluation and Limitations">
+            <div class="transparency-col">
+              <h5>Model Calibration &amp; Validation (Held-Out Test Set, n = 199)</h5>
+              <p id="modelMetricsText">
+                Accuracy: 95.98% · F1 Score: 96.04% · ROC-AUC: 0.9704 · Brier Score: 0.0367 · Expected Calibration Error (ECE): 2.71% (via 5-fold Platt sigmoid scaling).
+              </p>
+            </div>
+            <div class="transparency-col">
+              <h5>Interpretation Scope &amp; Limitations</h5>
+              <p>
+                Trained on 994 deduplicated survey records (~51% positive class balance, predominantly respondents aged 18–25). Confidence reflects agreement within this survey distribution, not general-population clinical probability.
+              </p>
+            </div>
+          </div>
+
+          <!-- Medical Disclaimer inside Result Dashboard -->
+          <div class="result-disclaimer-box" role="note" aria-label="Medical Disclaimer">
+            <div class="disclaimer-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+            </div>
+            <div>
+              <h5>Medical Disclaimer</h5>
+              <p>
+                This website is an educational screening and academic research demonstration tool only. Neither the prediction result nor the confidence percentage is a medical diagnosis, clinical risk probability, or a substitute for professional medical evaluation and laboratory testing (such as fasting blood glucose or HbA1c). If you have health concerns or experience symptoms, consult a qualified healthcare professional.
+              </p>
+            </div>
+          </div>
+
+          <!-- Result Action Buttons -->
+          <div class="result-actions">
+            <button type="button" class="btn btn-primary" id="retakeBtn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="23 4 23 10 17 10" />
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+              </svg>
+              <span>Retake Assessment</span>
+            </button>
+            <button type="button" class="btn btn-secondary" id="editAnswersBtn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
+              <span>Edit Answers</span>
+            </button>
+            <a href="index.html#home" class="btn btn-ghost" id="backHomeBtn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="index.html#home" class="footer-brand">
+            <span class="brand-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h4l2.5-6 4 12 2.5-6h5" />
+              </svg>
+            </span>
+            <span>Diabetes Prediction System</span>
+          </a>
+          <p class="footer-desc">
+            An academic research web application exploring how lifestyle habits, family history, and health symptoms relate to diabetes risk prediction with calibrated confidence levels.
+          </p>
+          <p class="footer-label">Academic Research Project</p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="prediction.html">Prediction</a></li>
+            <li><a href="index.html#disclaimer">Medical Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-disclaimer-col">
+          <h4>Medical Disclaimer</h4>
+          <p>
+            This website is designed for educational and academic research demonstration purposes only. The model output and confidence level reflect patterns in the study survey dataset and do not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional and laboratory testing for clinical evaluation.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Diabetes Prediction System</span>
+        <span aria-hidden="true">·</span>
+        <span>Academic Research Project</span>
+        <span aria-hidden="true">·</span>
+        <span>9-Feature Calibrated Random Forest</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="model-data.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

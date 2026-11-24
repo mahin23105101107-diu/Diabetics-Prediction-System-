@@ -1,0 +1,8 @@
+{
+  "name": "Remix Diabetes Prediction System",
+  "description": "Interactive lifestyle-based diabetes risk assessment and academic research demonstration website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
